@@ -1,25 +1,19 @@
 #include <config.h>
 
 #include <algorithm>
-#include <charconv>
-#include <cstdio>
-#include <format>
-#include <iostream>
-#include <print>
 #include <ranges>
-#include <stdexcept>
+#include <string>
 #include <string_view>
-
-#include <tclap/CmdLine.h>
 
 #include <common/common.hpp>
 #include <utils/cmd.hpp>
+#include <utils/strconv.hpp>
 
 using namespace std::literals::string_literals;
 using namespace std::literals::string_view_literals;
 using namespace ADVENT_OF_CODE_CPP_NAMESPACE;
 
-static void Solve(std::string_view input) {
+static std::string Solve(std::string_view input) {
     int current_pos = 50;
     int count       = 0;
     std::ranges::for_each(std::views::split(input, "\n"sv), [&current_pos, &count](auto &&operation) {
@@ -29,12 +23,7 @@ static void Solve(std::string_view input) {
             return;
         }
 
-        int  step = 0;
-        auto res  = std::from_chars(line_sv.data() + 1, line_sv.data() + line_sv.size(), step, 10);
-        if (res.ec != std::errc {}) [[unlikely]] {
-            throw std::runtime_error(std::format("Invalid number in operation: {}", line_sv));
-        }
-
+        int step = utils::StringViewToIntegral<int>(line_sv.substr(1));
         if (line_sv[0] == 'R') {
             current_pos = (current_pos + step) % 100;
         } else {
@@ -44,7 +33,7 @@ static void Solve(std::string_view input) {
             ++count;
         }
     });
-    std::println(std::cout, "{}", count);
+    return std::to_string(count);
 }
 
 ADVENT_OF_CODE_CPP_MAIN_FUNCTION(Solve)
