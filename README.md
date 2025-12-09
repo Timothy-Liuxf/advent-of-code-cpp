@@ -2,6 +2,10 @@
 
 C++ solution to [Advent of Code](https://adventofcode.com/)
 
+## Languages
+
+[English (United States)](./README.md) | [简体中文（中国大陆）](./README.zh-CN.md)
+
 ## How to Build
 
 ### Prerequisite
