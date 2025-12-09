@@ -1,6 +1,8 @@
 #ifndef ADVENT_OF_CODE_CPP_UTILS_CMD_HPP
 #define ADVENT_OF_CODE_CPP_UTILS_CMD_HPP
 
+#include <config.h>  // Required by the Macro function ADVENT_OF_CODE_CPP_MAIN_FUNCTION
+
 #include <cstdio>     // Required by the Macro function ADVENT_OF_CODE_CPP_MAIN_FUNCTION
 #include <exception>  // Required by the Macro funtion ADVENT_OF_CODE_CPP_MAIN_FUNCTION
 #include <functional>
