@@ -12,10 +12,10 @@
 
 ADVENT_OF_CODE_CPP_UTILS_NAMESPACE_BEGIN
 
-void SolveProblemFromArgs(int argc, char** argv, std::function<std::string(std::uint64_t, std::string_view)> solver);
+void SolveProblemFromArgs(int argc, char* argv[], std::function<std::string(std::uint64_t, std::string_view)> solver);
 
 #define ADVENT_OF_CODE_CPP_MAIN_FUNCTION(solve_func)                                                                   \
-    int main(int argc, char** argv) {                                                                                  \
+    int main(int argc, char* argv[]) {                                                                                 \
         try {                                                                                                          \
             ADVENT_OF_CODE_CPP_UTILS_NAMESPACE::SolveProblemFromArgs(argc, argv, solve_func);                          \
         } catch (std::exception & e) {                                                                                 \

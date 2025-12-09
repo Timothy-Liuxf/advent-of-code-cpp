@@ -9,6 +9,7 @@
         "readme",
         "version",
         "license",
-        "automake"
+        "automake",
+        "main"
     ]
 }

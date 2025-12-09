@@ -14,7 +14,7 @@
 
 ADVENT_OF_CODE_CPP_UTILS_NAMESPACE_BEGIN
 
-void SolveProblemFromArgs(int argc, char** argv, std::function<std::string(std::uint64_t, std::string_view)> solver) {
+void SolveProblemFromArgs(int argc, char* argv[], std::function<std::string(std::uint64_t, std::string_view)> solver) {
     TCLAP::CmdLine cmd(PACKAGE_NAME ": year2025 day1", ' ', PACKAGE_VERSION);
 
     TCLAP::ValueArg<std::uint64_t> part_arg("p", "part", "Part number", false, 1, "1 or 2");
