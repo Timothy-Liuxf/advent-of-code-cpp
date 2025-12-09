@@ -65,7 +65,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                        return std::ranges::distance(line) != 0;
                    }) |
                    std::views::transform([](auto &&line) {
-                       return line | std::views::transform([](auto ch) {
+                       return line | std::views::transform([](char ch) {
                                   return ch == '@' ? 1 : 0;
                               }) |
                               std::ranges::to<std::vector<int>>();
