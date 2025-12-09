@@ -6,6 +6,7 @@
         "deps",
         "year2025",
         "gitignore",
-        "readme"
+        "readme",
+        "version"
     ]
 }
