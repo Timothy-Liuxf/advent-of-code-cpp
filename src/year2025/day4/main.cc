@@ -1,9 +1,7 @@
 #include <config.h>
 
-#include <algorithm>
 #include <array>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <utility>
@@ -76,4 +74,4 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
     return std::to_string(SolveImpl(diagram, part));
 }
 
-ADVENT_OF_CODE_CPP_MAIN_FUNCTION(Solve)
+ADVENT_OF_CODE_CPP_MAIN_FUNCTION(2025, 4, Solve)

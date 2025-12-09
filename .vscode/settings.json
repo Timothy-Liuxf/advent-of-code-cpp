@@ -10,6 +10,7 @@
         "version",
         "license",
         "automake",
-        "main"
+        "main",
+        "cmd"
     ]
 }

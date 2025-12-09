@@ -60,4 +60,4 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
     return std::to_string(count);
 }
 
-ADVENT_OF_CODE_CPP_MAIN_FUNCTION(Solve)
+ADVENT_OF_CODE_CPP_MAIN_FUNCTION(2025, 1, Solve)
