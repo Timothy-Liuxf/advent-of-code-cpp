@@ -6,6 +6,12 @@ C++ solution to [Advent of Code](https://adventofcode.com/)
 
 [English (United States)](./README.md) | [简体中文（中国大陆）](./README.zh-CN.md)
 
+## Source Code
+
+The source code is in the `src/` directory.
+
+Specifically, the solution to the problem of Year `<yyyy>` Day `<d>` is the function named `Solve` in the file `src/year<yyyy>/day<d>/main.cc`. For example, the solution to the problem of Year 2025 Day 1 is in [`src/year2025/day1/main.cc`](src/year2025/day1/main.cc).
+
 ## How to Build
 
 ### Prerequisite

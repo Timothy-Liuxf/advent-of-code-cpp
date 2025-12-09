@@ -1,10 +1,16 @@
 # advent-of-code-cpp
 
-[Advent of Code](https://adventofcode.com/) C++ 解答
+[Advent of Code](https://adventofcode.com/) C++ 解答.
 
 ## 语言
 
 [English (United States)](./README.md) | [简体中文（中国大陆）](./README.zh-CN.md)
+
+## 源代码
+
+源代码均位于 `src/` 文件夹内.
+
+具体来说，`<yyyy>` 年 Day `<d>` 的解答是 `src/year<yyyy>/day<d>/main.cc` 文件中的 `Solve` 函数。例如，`2025` 年 Day `1` 的解答在文件 [`src/year2025/day1/main.cc`](src/year2025/day1/main.cc) 中.
 
 ## 构建方式
 
@@ -31,4 +37,4 @@ $ make -j$(nproc)
 $ ./build/bin/year<yyyy>/day<d> -f <path>
 ```
 
-`<yyyy>` 是年份，`<d>` 是天数，`<path>` 是输入文件的路径。例如：`./build/bin/year2025/day1 -f ./data/2025/day1/input.txt`
+`<yyyy>` 是年份，`<d>` 是天数，`<path>` 是输入文件的路径. 例如：`./build/bin/year2025/day1 -f ./data/2025/day1/input.txt`.
