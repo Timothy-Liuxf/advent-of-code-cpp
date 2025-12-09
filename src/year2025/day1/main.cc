@@ -37,6 +37,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                 ++count;
             }
         } else {
+            // Part 2
             if (direction == 'R') {
                 auto next_pos = current_pos + step;
                 if (next_pos >= 100) {

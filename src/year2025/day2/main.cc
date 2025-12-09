@@ -19,8 +19,14 @@ using namespace ADVENT_OF_CODE_CPP_NAMESPACE;
 
 using ID = std::uint64_t;
 
-[[nodiscard]] static ID IsInvalidID(ID id) {
+[[nodiscard]] static ID IsInvalidID(ID id, std::uint64_t part) {
     auto id_str = std::to_string(id);
+    if (part == 2) {
+        // Part 2
+        return (id_str + id_str).find(id_str, 1) != id_str.size();
+    }
+
+    // Part 1
     if (id_str.size() & 1) {
         return false;
     }
@@ -29,12 +35,8 @@ using ID = std::uint64_t;
 }
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
-    if (part == 2) {
-        throw std::runtime_error("Part 2 has not been implemented.");
-    }
-
     ID result = 0;
-    std::ranges::for_each(std::views::split(input, ","sv), [&result](auto &&operation) {
+    std::ranges::for_each(std::views::split(input, ","sv), [part, &result](auto &&operation) {
         // get the string_view of each line
         auto id_range_sv = std::string_view(&*operation.begin(), std::ranges::distance(operation));
         if (auto dash_pos = id_range_sv.find('-'); dash_pos == std::string_view::npos) [[unlikely]] {
@@ -43,7 +45,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
             auto start_id = utils::StringViewToIntegral<ID>(id_range_sv.substr(0, dash_pos));
             auto end_id   = utils::StringViewToIntegral<ID>(id_range_sv.substr(dash_pos + 1));
             for (auto id = start_id; id <= end_id; ++id) {
-                if (IsInvalidID(id)) {
+                if (IsInvalidID(id, part)) {
                     result += id;
                 }
             }
