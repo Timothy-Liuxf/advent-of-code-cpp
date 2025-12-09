@@ -29,7 +29,19 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
             joltage += (*first - '0') * 10 + (*second - '0');
         } else {
             // Part 2
-            throw std::runtime_error("Part 2 has not been implemented.");
+            auto          current_pos     = line_sv.cend();
+            std::uint64_t current_joltage = 0;
+            for (int i = 0; i < 12; ++i) {
+                std::string_view::const_iterator start_pos;
+                if (current_pos == line_sv.cend()) [[unlikely]] {
+                    start_pos = line_sv.cbegin();
+                } else {
+                    start_pos = current_pos + 1;
+                }
+                current_pos     = std::max_element(start_pos, line_sv.end() - 11 + i);
+                current_joltage = current_joltage * 10 + (*current_pos - '0');
+            }
+            joltage += current_joltage;
         }
     });
     return std::to_string(joltage);
