@@ -4,6 +4,7 @@
     },
     "conventionalCommits.scopes": [
         "deps",
-        "year2025"
+        "year2025",
+        "gitignore"
     ]
 }
