@@ -26,6 +26,7 @@ AC_PROG_CXX
 AC_PROG_CC
 
 # Checks for libraries.
+AC_CHECK_LIB([curl], [curl_version_info], [], [AC_MSG_ERROR([libcurl not found])])
 
 # Checks for header files.
 

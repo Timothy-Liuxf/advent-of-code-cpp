@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "Makefile.inc": "automake"
-    }
+    },
+    "conventionalCommits.scopes": [
+        "deps"
+    ]
 }
