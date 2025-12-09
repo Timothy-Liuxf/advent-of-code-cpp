@@ -1,0 +1,3 @@
+AC_DEFUN([AX_INIT_CXXFLAGS], [dnl
+  : ${CXXFLAGS=""}
+])

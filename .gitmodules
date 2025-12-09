@@ -1,0 +1,6 @@
+[submodule "third_party/tclap"]
+	path = third_party/tclap
+	url = https://github.com/mirror/tclap.git
+[submodule "third_party/autoconf-archive"]
+	path = third_party/autoconf-archive
+	url = git@github.com:autoconf-archive/autoconf-archive.git
