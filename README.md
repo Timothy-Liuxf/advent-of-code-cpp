@@ -34,7 +34,7 @@ where `<compiler>` is the compiler you want to use, such as `g++-14` or `clang++
 ## How to Run
 
 ```bash
-$ ./build/bin/year<yyyy>/day<d> -f <path>
+$ ./build/bin/year<yyyy>/day<d> -p <part> -f <path>
 ```
 
-where `<yyyy>` is the year, `<d>` is the number of the day, and `<path>` is the path to the input file. For example: `./build/bin/year2025/day1 -f ./data/2025/day1/input.txt`
+where `<yyyy>` is the year, `<d>` is the number of the day, `<p>` is the part number (1 by default), and `<path>` is the path to the input file. For example: `./build/bin/year2025/day1 -p 1 -f ./data/2025/day1/input.txt`

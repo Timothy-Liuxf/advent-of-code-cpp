@@ -34,7 +34,7 @@ $ make -j$(nproc)
 ## 运行方法
 
 ```bash
-$ ./build/bin/year<yyyy>/day<d> -f <path>
+$ ./build/bin/year<yyyy>/day<d> -p <part> -f <path>
 ```
 
-`<yyyy>` 是年份，`<d>` 是天数，`<path>` 是输入文件的路径. 例如：`./build/bin/year2025/day1 -f ./data/2025/day1/input.txt`.
+`<yyyy>` 是年份，`<d>` 是天数，`<p>` 是 Part 序号（默认为 1），`<path>` 是输入文件的路径. 例如：`./build/bin/year2025/day1 -p 1 -f ./data/2025/day1/input.txt`.

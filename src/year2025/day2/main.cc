@@ -28,7 +28,11 @@ using ID = std::uint64_t;
     return id_sv.substr(0, id_sv.size() / 2) == id_sv.substr(id_sv.size() / 2);
 }
 
-static std::string Solve(std::string_view input) {
+static std::string Solve(std::uint64_t part, std::string_view input) {
+    if (part == 2) {
+        throw std::runtime_error("Part 2 has not been implemented.");
+    }
+
     ID result = 0;
     std::ranges::for_each(std::views::split(input, ","sv), [&result](auto &&operation) {
         // get the string_view of each line
