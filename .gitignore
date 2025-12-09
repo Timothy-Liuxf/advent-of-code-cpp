@@ -103,3 +103,6 @@ advent-of-code-cpp-*.tar.gz
 # Clangd Files
 .cache/
 compile_commands.json
+
+# Input files
+input.txt

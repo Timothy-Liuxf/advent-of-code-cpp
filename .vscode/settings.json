@@ -3,6 +3,7 @@
         "Makefile.inc": "automake"
     },
     "conventionalCommits.scopes": [
-        "deps"
+        "deps",
+        "year2025"
     ]
 }

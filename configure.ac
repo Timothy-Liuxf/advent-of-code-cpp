@@ -10,10 +10,14 @@ AC_PROG_RANLIB
 
 AM_INIT_AUTOMAKE([foreign subdir-objects tar-pax])
 
+AC_ARG_VAR([CXXFS], [C++ filesystem library.])
+: ${CXXFS:=stdc++fs}
+AC_SUBST([CXXFS])
+
 AX_INIT_CXXFLAGS
 AX_CXX_COMPILE_STDCXX_EX(23, [noext], [mandatory])
 
-# AX_APPEND_COMPILE_FLAGS([-O2 -std=c++17], [CXXFLAGS])
+AX_APPEND_COMPILE_FLAGS([-O2 -std=c++23], [CXXFLAGS])
 AX_APPEND_COMPILE_FLAGS([-Wall -Wpedantic -Wextra -Werror], [CXXFLAGS])
 AX_APPEND_COMPILE_FLAGS([                                                    dnl
     -I.                                                                      dnl
