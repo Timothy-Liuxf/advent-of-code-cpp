@@ -2,7 +2,7 @@ bin_PROGRAMS =
 noinst_LIBRARIES =
 noinst_HEADERS =
 lib_LIBRARIES =
-EXTRA_DIST =
+EXTRA_DIST = autogen.sh LICENSE.txt
 BUILT_SOURCES =
 SUBDIRS =
 

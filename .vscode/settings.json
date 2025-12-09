@@ -8,6 +8,7 @@
         "gitignore",
         "readme",
         "version",
-        "license"
+        "license",
+        "automake"
     ]
 }
