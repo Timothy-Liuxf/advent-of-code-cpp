@@ -89,7 +89,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                           return std::make_pair(start_id, end_id);
                       }) |
                       std::ranges::to<std::vector<IDRange>>();
-        auto       merged_ranges = SortAndMergeRanges(ranges);
+        const auto merged_ranges = SortAndMergeRanges(ranges);
         const auto result = std::ranges::fold_left(merged_ranges, 0uz, [](std::uint64_t acc, const IDRange& range) {
             return acc + (range.second - range.first + 1);
         });
