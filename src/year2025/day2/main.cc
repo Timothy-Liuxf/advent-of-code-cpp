@@ -70,8 +70,8 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
         if (auto dash_pos = id_range_sv.find('-'); dash_pos == std::string_view::npos) [[unlikely]] {
             throw std::runtime_error(std::format("Invalid id range: {}", id_range_sv));
         } else {
-            auto start_id = utils::StringViewToIntegral<ID>(id_range_sv.substr(0, dash_pos));
-            auto end_id   = utils::StringViewToIntegral<ID>(id_range_sv.substr(dash_pos + 1));
+            const auto start_id = utils::StringViewToIntegral<ID>(id_range_sv.substr(0, dash_pos));
+            const auto end_id   = utils::StringViewToIntegral<ID>(id_range_sv.substr(dash_pos + 1));
             for (auto id = start_id; id <= end_id; ++id) {
                 if (IsInvalidID(id, part)) {
                     result += id;

@@ -1,7 +1,6 @@
 #include <config.h>
 
 #include <algorithm>
-#include <concepts>
 #include <ranges>
 #include <string>
 #include <string_view>
