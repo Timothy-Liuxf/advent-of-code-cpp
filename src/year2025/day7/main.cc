@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include <string_view>
-#include <unordered_set>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -18,10 +18,6 @@ using namespace std::literals::string_view_literals;
 using namespace ADVENT_OF_CODE_CPP_NAMESPACE;
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
-    if (part == 2) {
-        throw std::runtime_error("Part 2 not implemented yet");
-    }
-
     auto diagram = input | std::views::split('\n') | std::views::filter([](auto&& line) {
                        return !line.empty();
                    }) |
@@ -41,25 +37,28 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
         throw std::runtime_error("Start position not found");
     }();
 
-    auto beams  = std::unordered_set<std::size_t> {start_col};
-    auto result = 0uz;
+    auto beams  = std::unordered_map<std::size_t, std::size_t> {{start_col, 1}};
+    auto nsplit = 0uz;
     for (auto i = start_row + 1; i < nrow; ++i) {
-        auto next_beams = std::unordered_set<std::size_t> {};
-        for (const auto j : beams) {
+        auto next_beams = std::unordered_map<std::size_t, std::size_t> {};
+        for (const auto [j, ntime] : beams) {
             if (diagram[i][j] == '^') {
-                if (j - 1 > 0) {
-                    next_beams.insert(j - 1);
+                if (j - 1 >= 0) {
+                    next_beams[j - 1] += ntime;
                 }
                 if (j + 1 < ncol) {
-                    next_beams.insert(j + 1);
+                    next_beams[j + 1] += ntime;
                 }
-                ++result;
+                ++nsplit;
             } else {
-                next_beams.insert(j);
+                next_beams[j] += ntime;
             }
         }
         beams = std::move(next_beams);
     }
+    auto result = part == 1 ? nsplit : std::ranges::fold_left(beams, 0uz, [](std::size_t acc, auto&& beam) {
+        return acc + beam.second;
+    });
     return std::to_string(result);
 }
 
