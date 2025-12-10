@@ -16,7 +16,7 @@ using namespace ADVENT_OF_CODE_CPP_NAMESPACE;
 static std::string Solve(std::uint64_t part, std::string_view input) {
     std::uint64_t joltage = 0;
     std::ranges::for_each(std::views::split(input, "\n"sv), [&joltage, part](auto &&line) {
-        auto line_sv = std::string_view(&*line.begin(), std::ranges::distance(line));
+        auto line_sv = std::string_view(line);
         if (line_sv.empty()) [[unlikely]] {
             return;
         }

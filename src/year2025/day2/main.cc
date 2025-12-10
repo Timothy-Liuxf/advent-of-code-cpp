@@ -64,9 +64,9 @@ using ID = std::uint64_t;
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
     ID result = 0;
-    std::ranges::for_each(std::views::split(input, ","sv), [part, &result](auto &&operation) {
+    std::ranges::for_each(std::views::split(input, ","sv), [part, &result](auto &&id_range) {
         // get the string_view of each line
-        auto id_range_sv = std::string_view(&*operation.begin(), std::ranges::distance(operation));
+        auto id_range_sv = std::string_view(id_range);
         if (auto dash_pos = id_range_sv.find('-'); dash_pos == std::string_view::npos) [[unlikely]] {
             throw std::runtime_error(std::format("Invalid id range: {}", id_range_sv));
         } else {

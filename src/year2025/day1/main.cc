@@ -18,7 +18,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
     int count       = 0;
     std::ranges::for_each(std::views::split(input, "\n"sv), [&current_pos, &count, part](auto &&operation) {
         // get the string_view of each line
-        auto line_sv = std::string_view(&*operation.begin(), std::ranges::distance(operation));
+        auto line_sv = std::string_view(operation);
         if (line_sv.empty()) [[unlikely]] {
             return;
         }

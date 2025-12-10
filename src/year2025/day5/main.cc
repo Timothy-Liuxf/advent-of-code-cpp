@@ -44,7 +44,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
         std::vector<IDRange> merged_ranges;
         auto                 result = std::ranges::count_if(
             std::views::split(input, "\n"sv) | std::views::drop_while([&ranges, &merged_ranges](auto&& line) {
-                std::string_view line_sv = std::string_view(&*line.begin(), std::ranges::distance(line));
+                std::string_view line_sv  = std::string_view(line);
                 const bool       is_empty = line_sv.empty();
                 if (!is_empty) [[likely]] {
                     if (const auto dash_pos = line_sv.find('-'); dash_pos == std::string_view::npos) [[unlikely]] {
@@ -61,7 +61,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                 }
             }),
             [&merged_ranges](auto&& line) {
-                auto line_sv = std::string_view(&*line.begin(), std::ranges::distance(line));
+                auto line_sv = std::string_view(line);
                 if (line_sv.empty()) [[unlikely]] {
                     return false;
                 }
@@ -79,7 +79,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                           return !line.empty();
                       }) |
                       std::views::transform([](auto&& line) {
-                          std::string_view line_sv  = std::string_view(&*line.begin(), std::ranges::distance(line));
+                          std::string_view line_sv  = std::string_view(line);
                           const auto       dash_pos = line_sv.find('-');
                           if (dash_pos == std::string_view::npos) [[unlikely]] {
                               throw std::runtime_error(std::format("Invalid id range: {}", line_sv));
