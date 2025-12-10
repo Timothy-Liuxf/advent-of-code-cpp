@@ -1,5 +1,6 @@
 #include "cmd.hpp"
 
+#include <concepts>
 #include <cstdint>
 #include <cstdio>
 #include <exception>
@@ -7,6 +8,7 @@
 #include <print>
 #include <stdexcept>
 #include <string>
+#include <type_traits>
 
 #include <tclap/CmdLine.h>
 
@@ -15,7 +17,10 @@
 
 ADVENT_OF_CODE_CPP_UTILS_NAMESPACE_BEGIN
 
-int SolveProblemFromArgs(int argc, char* argv[], const std::string& title, SolveFunctionType solver) noexcept {
+namespace {
+
+template <typename SolveFunctionType>
+int SolveProblemFromArgsImpl(int argc, char* argv[], const std::string& title, SolveFunctionType solver) noexcept {
     try {
         TCLAP::CmdLine cmd(title, ' ', PACKAGE_VERSION);
 
@@ -54,6 +59,17 @@ int SolveProblemFromArgs(int argc, char* argv[], const std::string& title, Solve
         return 1;
     }
     return 0;
+}
+
+}  // namespace
+
+int SolveProblemFromArgs(int argc, char* argv[], const std::string& title,
+                         std::string (*solver)(std::uint64_t part, std::string_view input)) noexcept {
+    return SolveProblemFromArgsImpl(argc, argv, title, solver);
+}
+int SolveProblemFromArgs(int argc, char* argv[], const std::string& title,
+                         std::string (*solver)(std::uint64_t part, const std::string& input)) noexcept {
+    return SolveProblemFromArgsImpl(argc, argv, title, solver);
 }
 
 ADVENT_OF_CODE_CPP_UTILS_NAMESPACE_END

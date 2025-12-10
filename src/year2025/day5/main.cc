@@ -37,12 +37,11 @@ using IDRange = std::pair<ID, ID>;
 }
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
-    (void)input;
     if (part == 1) {
         // Part 1
-        std::vector<IDRange> ranges;
-        std::vector<IDRange> merged_ranges;
-        auto                 result = std::ranges::count_if(
+        std::vector<IDRange> ranges, merged_ranges;
+
+        const auto result = std::ranges::count_if(
             std::views::split(input, "\n"sv) | std::views::drop_while([&ranges, &merged_ranges](auto&& line) {
                 std::string_view line_sv  = std::string_view(line);
                 const bool       is_empty = line_sv.empty();
@@ -51,7 +50,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                         throw std::runtime_error(std::format("Invalid id range: {}", line_sv));
                     } else {
                         const auto start_id = utils::StringViewToIntegral<ID>(line_sv.substr(0, dash_pos));
-                        const auto end_id = utils::StringViewToIntegral<ID>(line_sv.substr(dash_pos + 1));
+                        const auto end_id   = utils::StringViewToIntegral<ID>(line_sv.substr(dash_pos + 1));
                         ranges.emplace_back(start_id, end_id);
                     }
                     return true;
