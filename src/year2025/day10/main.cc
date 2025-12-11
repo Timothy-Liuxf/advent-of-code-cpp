@@ -13,7 +13,6 @@
 #include <common/common.hpp>
 #include <utils/cmd.hpp>
 #include <utils/strconv.hpp>
-#include <utils/types.hpp>
 
 using namespace std::literals::string_literals;
 using namespace std::literals::string_view_literals;
