@@ -2,7 +2,6 @@
 
 #include <algorithm>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <utility>
@@ -32,9 +31,10 @@ struct Coord {
 
 class UnionFind {
 public:
-    explicit UnionFind(std::size_t n) : parent_(n) {
+    explicit UnionFind(std::size_t n) : parent_(n), rank_(n) {
         for (auto i = 0uz; i < n; ++i) {
             this->parent_[i] = i;
+            this->rank_[i]   = 1;
         }
     }
 
@@ -42,12 +42,14 @@ public:
         return parent_[x] == x ? x : this->parent_[x] = this->Find(parent_[x]);
     }
 
-    void Union(std::size_t x, std::size_t y) {
+    std::size_t Union(std::size_t x, std::size_t y) noexcept {
         const auto root_x = this->Find(x);
         const auto root_y = this->Find(y);
         if (root_x != root_y) {
             this->parent_[root_y] = root_x;
+            this->rank_[root_x] += this->rank_[root_y];
         }
+        return this->rank_[root_x];
     }
 
     const std::vector<std::size_t>& GetParents() const noexcept {
@@ -60,10 +62,6 @@ private:
 };
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
-    if (part == 2) {
-        throw std::runtime_error("Part 2 not implemented yet");
-    }
-
     const auto points =
         input | std::views::split("\n"sv) | std::views::filter([](auto&& line) {
             return !line.empty();
@@ -95,9 +93,21 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
         return a.first < b.first;
     });
 
+    UnionFind uf(points.size());
+    if (part != 1) {
+        // Part 2
+        for (const auto& edge : edges) {
+            const auto [i, j] = edge.second;
+            const auto rank   = uf.Union(i, j);
+            if (rank == points.size()) {
+                return std::to_string(points[i].x * points[j].x);
+            }
+        }
+        std::unreachable();
+    }
+
     constexpr std::size_t kConnectEdges  = 1000uz;
     constexpr std::size_t kCountCircuits = 3uz;
-    UnionFind             uf(points.size());
     for (auto k = 0uz; k < kConnectEdges; ++k) {
         const auto [i, j] = edges[k].second;
         uf.Union(i, j);
