@@ -43,7 +43,7 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
         auto next_beams = std::unordered_map<std::size_t, std::size_t> {};
         for (const auto [j, ntime] : beams) {
             if (diagram[i][j] == '^') {
-                if (j - 1 >= 0) {
+                if ((std::int64_t)j - 1 >= 0) {
                     next_beams[j - 1] += ntime;
                 }
                 if (j + 1 < ncol) {
