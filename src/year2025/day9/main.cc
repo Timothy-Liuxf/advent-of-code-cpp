@@ -16,7 +16,7 @@
 #include <common/common.hpp>
 #include <utils/cmd.hpp>
 #include <utils/strconv.hpp>
-#include "utils/types.hpp"
+#include <utils/types.hpp>
 
 using namespace std::literals::string_literals;
 using namespace std::literals::string_view_literals;
@@ -28,6 +28,7 @@ struct VerticalEdge {
     std::int64_t y;
     std::int64_t x1;
     std::int64_t x2;
+
     VerticalEdge(const Coord& start, const Coord& end) {
         if (start.second == end.second) {
             this->y  = start.second;
@@ -44,6 +45,7 @@ struct HorizontalEdge {
     std::int64_t x;
     std::int64_t y1;
     std::int64_t y2;
+
     HorizontalEdge(const Coord& start, const Coord& end) {
         if (start.first == end.first) {
             this->x  = start.first;
@@ -106,7 +108,6 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
             return !line.empty();
         }) |
         std::views::transform([](auto&& line) {
-            // return coord a vector<pair<int64, int64>>, and avoid vector<int64>
             auto coord = std::array<std::int64_t, 2uz> {};
             for (const auto [i, val] : line | std::views::split(',') | std::views::transform([](auto&& number) {
                                            return utils::StringViewToIntegral<std::int64_t>(std::string_view(number));
@@ -162,7 +163,6 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                 Coord {other_tile.first, tile.second},
             }};
 
-            bool       valid         = true;
             const auto point_on_edge = [&](const Coord& point, const auto& edge) {
                 if (OnEdge(point, edge)) [[unlikely]] {
                     return true;
@@ -185,6 +185,8 @@ static std::string Solve(std::uint64_t part, std::string_view input) {
                 }
                 return true;
             };
+
+            bool valid = true;
 
             {
                 /*

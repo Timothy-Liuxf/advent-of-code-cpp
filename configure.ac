@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([advent-of-code-cpp], [2025.09.2.0],
+AC_INIT([advent-of-code-cpp], [2025.09.2.1],
     [liuxf19@163.com], [advent-of-code-cpp], [https://github.com/Timothy-Liuxf/advent-of-code-cpp])
 AC_CONFIG_SRCDIR([src/main.cc])
 AC_CONFIG_HEADERS([config.h])
