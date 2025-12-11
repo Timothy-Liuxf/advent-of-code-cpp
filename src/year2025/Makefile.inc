@@ -5,3 +5,4 @@ include %reldir%/day4/Makefile.inc
 include %reldir%/day5/Makefile.inc
 include %reldir%/day6/Makefile.inc
 include %reldir%/day7/Makefile.inc
+include %reldir%/day8/Makefile.inc
