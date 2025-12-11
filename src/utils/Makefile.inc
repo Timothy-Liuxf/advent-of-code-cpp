@@ -1,5 +1,6 @@
 noinst_HEADERS +=                                                              \
     %reldir%/common.hpp                                                        \
+    %reldir%/types.hpp                                                         \
     %reldir%/strconv.hpp                                                       \
     %reldir%/io.hpp                                                            \
     %reldir%/cmd.hpp                                                           \
