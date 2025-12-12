@@ -4,7 +4,6 @@
 #include <cmath>
 #include <cstddef>
 #include <ranges>
-#include <stdexcept>
 #include <string>
 #include <string_view>
 #include <tuple>
@@ -27,7 +26,7 @@ struct Region {
 
 static std::string Solve(std::uint64_t part, std::string_view input) {
     if (part == 2) {
-        throw std::runtime_error("Part 2 not implemented yet");
+        return "Please click the link \'[Decorate the North Pole Again]\' on the webpage to get the 24th star."s;
     }
 
     std::vector<std::vector<std::string>> shapes;
